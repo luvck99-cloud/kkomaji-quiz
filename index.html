@@ -2,169 +2,144 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#5b5bd6">
-<meta name="description" content="초등학교 입학 준비를 위한 맞춤법, 띄어쓰기, 수학, 과학, 영어, 역사 퀴즈">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>꼬마 지식 탐험대</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ff8da1">
+<title>사랑하는 주아와 퀴즈놀이</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#22233b;background:#f5f6ff}
-*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}
-header{background:linear-gradient(135deg,#5658d9,#8b6ce5);color:white;padding:22px 18px 25px;border-radius:0 0 26px 26px}
-header .eyebrow{font-size:13px;opacity:.9}header h1{font-size:26px;margin:7px 0}header p{margin:0;font-size:14px;opacity:.95}
-main{max-width:720px;margin:auto;padding:14px 14px 36px}.card{background:white;border:1px solid #e6e7f2;border-radius:18px;padding:17px;margin:12px 0;box-shadow:0 3px 14px #25255b08}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:#74758b;font-size:13px}.pill{display:inline-block;background:#efefff;color:#4e50ba;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}
-.track{height:8px;background:#e8e8f4;border-radius:99px;overflow:hidden;margin:12px 0}.fill{height:100%;background:#6968df;transition:width .2s}
-.primary,.secondary,.option{border-radius:13px;padding:12px 14px;border:0}.primary{background:#5b5bd6;color:white;font-weight:750}.secondary{background:#f0f0fb;color:#42439a;font-weight:650;border:1px solid #e2e2f3}.primary:disabled{opacity:.4}
-.full{width:100%;margin-top:9px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:12px}
-.level{padding:9px 2px;border-radius:10px;border:1px solid #e2e2f3;background:white;color:#42435c;font-size:12px}.level:disabled{opacity:.38}.level.done{background:#e9f8ef;border-color:#b9e8cb}
-.question{font-size:22px;font-weight:800;line-height:1.5;margin:15px 0 20px;word-break:keep-all}.opt{width:100%;display:flex;gap:10px;align-items:center;text-align:left;background:white;border:1px solid #e3e4f1;border-radius:13px;padding:12px;margin:8px 0;color:#272840;line-height:1.45}.letter{display:grid;place-items:center;flex:0 0 29px;height:29px;border-radius:9px;background:#f0f0fc;color:#5152b5;font-weight:800}.opt.correct{background:#eaf8ef;border-color:#45aa72}.opt.wrong{background:#fff0f0;border-color:#e08080}.opt:disabled{cursor:default}
-.feedback{border-radius:12px;padding:12px;margin-top:12px;font-size:14px;line-height:1.5}.good{background:#eaf8ef}.bad{background:#fff0f0}.answer-input{width:100%;border:1px solid #dfe0ed;border-radius:12px;padding:14px;font-size:17px}
-.small{font-size:12px}.center{text-align:center}.score{font-size:42px;font-weight:850;margin:12px 0}.footer{font-size:12px;color:#77788c;text-align:center;padding:12px}
-@media(min-width:600px){header{padding-left:max(22px,calc((100% - 680px)/2));padding-right:max(22px,calc((100% - 680px)/2))}.question{font-size:25px}}
+:root{--pink:#ff8da1;--deep:#e65378;--cream:#fff8f0;--ink:#333445;--mint:#dff7ed;--blue:#e7f1ff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;background:linear-gradient(140deg,#fff3f5,#f1f7ff);color:var(--ink)}
+header{padding:24px 16px 18px;text-align:center;background:linear-gradient(120deg,#ffb5c2,#ffd9a8);border-radius:0 0 28px 28px}
+h1{font-size:clamp(24px,5vw,36px);margin:0 0 8px}header p{margin:0}
+main{max-width:900px;margin:18px auto;padding:0 14px 40px}
+.panel{background:#fff;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 7px 22px #6a57700e}
+button,select{font:inherit;border:0;border-radius:14px;padding:12px 15px;cursor:pointer}
+button{background:var(--pink);color:#fff;font-weight:700;box-shadow:0 3px 0 #e56f88}
+button:active{transform:translateY(2px);box-shadow:none}
+button.secondary{background:#e8edf7;color:#3d4760;box-shadow:none}
+button.mint{background:#43b995;box-shadow:0 3px 0 #268d6d}
+button.gold{background:#f4b544;box-shadow:0 3px 0 #cf9225}
+button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(54px,1fr));gap:8px;margin-top:12px}
+.level{padding:11px 4px;background:#e9f3ff;color:#3d5270;box-shadow:none}
+.level.done{background:#dff7ed;color:#207c61}.level.current{background:#ff8da1;color:#fff}
+.small{font-size:13px;color:#737789}.hidden{display:none!important}
+.progress{height:10px;background:#f0edf1;border-radius:99px;overflow:hidden;margin:12px 0}.bar{height:100%;background:#48c3a0;width:0;transition:width .2s}
+.badge{display:inline-block;padding:5px 10px;border-radius:99px;background:#fff0d9;font-size:13px;font-weight:700}
+.question{font-size:clamp(21px,4vw,29px);font-weight:800;line-height:1.45;margin:20px 0;text-align:center;white-space:pre-line}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{background:#f4f6fb;color:#35394b;box-shadow:none;border:2px solid transparent;min-height:60px;font-size:17px}
+.opt:hover{border-color:#ffb0bf}.opt.correct{background:#d9f7e9;border-color:#4cb58b;color:#176b4e}.opt.wrong{background:#ffe0e4;border-color:#e96b7e;color:#9b2940}
+.feedback{padding:14px;border-radius:14px;margin-top:14px;font-weight:700}.feedback.good{background:#e0f8ed;color:#176b4e}.feedback.bad{background:#fff0d9;color:#875b0b}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}h2{margin:0 0 8px;font-size:21px}
+.item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #f0edf1}.item:last-child{border-bottom:0}
+.item .desc{flex:1}.item strong{display:block}.item small{color:#747789}
+footer{text-align:center;color:#85889a;font-size:12px;padding:20px}
+@media(max-width:520px){.options{grid-template-columns:1fr}.panel{padding:15px}.opt{min-height:54px}}
 </style>
 </head>
 <body>
-<header><div class="eyebrow">🎒 초등 입학 준비 퀴즈</div><h1>꼬마 지식 탐험대 🚀</h1><p>하루하루 조금씩, 신나는 배움의 모험!</p></header>
-<main><div id="app"></div><div class="footer">학습 기록은 이 기기의 브라우저에 저장됩니다.</div></main>
+<header><h1>💗 사랑하는 주아와 퀴즈놀이 💗</h1><p>하나씩 천천히, 재미있게 도전해 보자!</p></header>
+<main>
+<section id="home">
+ <div class="panel">
+  <div class="section-title"><h2>🌈 레벨 선택</h2><span class="badge">총 50레벨 · 1,000문제</span></div>
+  <p>모든 레벨이 열려 있어요. 원하는 단계를 골라 시작해 보세요!</p>
+  <div class="row"><button onclick="startReview('wrong')">❌ 틀린 문제 다시 풀기 <span id="wrongCount">0</span></button><button class="mint" onclick="startReview('flagged')">🤔 애매한 문제 모음 <span id="flagCount">0</span></button></div>
+  <div class="row" style="margin-top:10px"><button class="secondary" onclick="showStats()">🏆 나의 기록</button><button class="secondary" onclick="resetProgress()">기록 초기화</button></div>
+  <div id="levels" class="levels"></div>
+  <p class="small">문제 시간 제한 없음 · 선택한 답과 기록은 이 기기에 저장됩니다.</p>
+ </div>
+ <div id="stats" class="panel hidden"></div>
+</section>
+<section id="play" class="hidden">
+ <div class="panel">
+  <div class="section-title"><span class="badge" id="levelBadge">LEVEL 1</span><span id="counter">1 / 20</span></div>
+  <div class="progress"><div id="bar" class="bar"></div></div>
+  <div class="row" style="justify-content:space-between"><span class="small" id="category">수학</span><button class="gold" id="flagBtn" onclick="toggleFlag()">🤔 애매한 문제로 표시</button></div>
+  <div id="question" class="question"></div>
+  <div id="options" class="options"></div>
+  <div id="feedback" class="feedback hidden"></div>
+  <div class="row" style="justify-content:space-between;margin-top:16px"><button class="secondary" onclick="goHome()">레벨 목록</button><div class="row"><button id="nextBtn" onclick="nextQuestion()" disabled>다음 문제 →</button></div></div>
+ </div>
+</section>
+<section id="review" class="hidden">
+ <div class="panel">
+  <div class="section-title"><h2 id="reviewTitle">다시 풀기</h2><button class="secondary" onclick="goHome()">레벨 목록</button></div>
+  <p class="small">문제를 풀면 해당 모음에서 정답 여부가 갱신됩니다.</p>
+  <div id="reviewBody"></div>
+ </div>
+</section>
+</main>
+<footer>주아를 위한 작은 지식 탐험 🌷</footer>
 <script>
-const $=s=>document.querySelector(s);
-const subjects=["맞춤법","띄어쓰기","수학","영어","과학","역사·사회","생활 상식"];
-const spelling=[
-["오늘은 날씨가 참 ___ .","좋아요",["조아요","조와요","좋와요"]],
-["친구와 사이좋게 ___ .","지내요",["지내여","지내용","지내오"]],
-["나는 학교에 ___ .","갑니다",["감니다","갑니가","갑니따"]],
-["꽃에 물을 ___ .","주었어요",["주엇어요","주었서요","주엇서요"]],
-["어제 공원에서 친구를 ___ .","만났어요",["만낫어요","만나써요","만낫서요"]],
-["바닥에 떨어진 연필을 ___ .","주웠어요",["주웟어요","줏었어요","주엇어요"]],
-["밥을 먹고 이를 ___ .","닦아요",["닥아요","딱아요","닦와요"]],
-["동생이 크게 ___ .","웃었어요",["우섰어요","웃엇어요","웃어써요"]],
-["책을 가방에 ___ .","넣었어요",["너었어요","넜어요","넣엇어요"]],
-["나는 그림을 ___ .","그렸어요",["그렀어요","그리었요","그렷어요"]],
-["비가 와서 우산을 ___ .","썼어요",["썻어요","써써요","섰어요"]],
-["친구에게 편지를 ___ .","보냈어요",["보냇어요","보내써요","보냇서요"]],
-["나는 약속을 ___ .","지켰어요",["지켯어요","지켜써요","지켯서요"]],
-["아침에 일찍 ___ .","일어났어요",["일어낫어요","이러났어요","일어낫서요"]],
-["동생이 사탕을 ___ .","먹었어요",["머겄어요","먹엇어요","머것어요"]]
-];
-const spacing=[
-["바르게 띄어 쓴 문장은?","나는 학교에 갑니다.",["나는학교에 갑니다.","나는 학교에갑니다.","나는학교에갑니다."]],
-["바르게 띄어 쓴 문장은?","예쁜 꽃이 피었어요.",["예쁜꽃이 피었어요.","예쁜 꽃이피었어요.","예쁜꽃이피었어요."]],
-["바르게 띄어 쓴 문장은?","동생과 함께 놀았어요.",["동생과함께 놀았어요.","동생과 함께놀았어요.","동생과함께놀았어요."]],
-["바르게 띄어 쓴 문장은?","책을 읽고 있어요.",["책을읽고 있어요.","책을 읽고있어요.","책을읽고있어요."]],
-["바르게 띄어 쓴 문장은?","오늘 아침에 밥을 먹었어요.",["오늘아침에 밥을 먹었어요.","오늘 아침에밥을 먹었어요.","오늘아침에밥을 먹었어요."]],
-["바르게 띄어 쓴 문장은?","우리 집 앞에 나무가 있어요.",["우리집 앞에 나무가 있어요.","우리 집 앞에나무가 있어요.","우리집앞에 나무가 있어요."]],
-["바르게 띄어 쓴 문장은?","나는 책을 좋아해요.",["나는책을 좋아해요.","나는 책을좋아해요.","나는책을좋아해요."]],
-["바르게 띄어 쓴 문장은?","비가 많이 내렸어요.",["비가많이 내렸어요.","비가 많이내렸어요.","비가많이내렸어요."]],
-["바르게 띄어 쓴 문장은?","엄마와 시장에 갔어요.",["엄마와시장에 갔어요.","엄마와 시장에갔어요.","엄마와시장에갔어요."]],
-["바르게 띄어 쓴 문장은?","오늘도 열심히 공부해요.",["오늘도열심히 공부해요.","오늘도 열심히공부해요.","오늘도열심히공부해요."]]
-];
-const vocab=[
-["원숭이를 영어로 쓰면 무엇일까요?","monkey",["lion","tiger","rabbit"]],
-["monkey는 한글로 무엇일까요?","원숭이",["사자","호랑이","토끼"]],
-["사자를 영어로 쓰면 무엇일까요?","lion",["tiger","monkey","bear"]],
-["apple은 한글로 무엇일까요?","사과",["바나나","포도","수박"]],
-["고양이를 영어로 쓰면 무엇일까요?","cat",["dog","bird","fish"]],
-["blue는 무슨 색일까요?","파란색",["빨간색","노란색","초록색"]],
-["강아지를 영어로 쓰면 무엇일까요?","dog",["cat","cow","duck"]],
-["three는 숫자로 얼마일까요?","3",["2","4","5"]],
-["book은 한글로 무엇일까요?","책",["연필","가방","의자"]],
-["바나나를 영어로 쓰면 무엇일까요?","banana",["orange","grape","melon"]],
-["red는 무슨 색일까요?","빨간색",["파란색","검은색","하얀색"]],
-["물고기를 영어로 쓰면 무엇일까요?","fish",["bird","frog","horse"]],
-["one은 숫자로 얼마일까요?","1",["0","2","3"]],
-["해를 영어로 쓰면 무엇일까요?","sun",["moon","star","cloud"]],
-["school은 한글로 무엇일까요?","학교",["병원","공원","도서관"]],
-["green은 무슨 색일까요?","초록색",["보라색","주황색","분홍색"]],
-["엄마를 영어로 쓰면 무엇일까요?","mother",["father","brother","sister"]],
-["water는 한글로 무엇일까요?","물",["불","바람","흙"]],
-["별을 영어로 쓰면 무엇일까요?","star",["moon","sun","rain"]],
-["happy는 한글로 어떤 뜻일까요?","행복한",["슬픈","졸린","화난"]]
-];
-const science=[
-["식물이 자라는 데 필요한 것은?","물과 햇빛",["장난감","텔레비전","과자"]],
-["물이 아주 추워지면 어떻게 될까요?","얼음이 돼요",["종이가 돼요","모래가 돼요","나무가 돼요"]],
-["낮에 지구를 밝게 비추는 것은?","태양",["달","구름","무지개"]],
-["사람이 숨을 쉴 때 필요한 것은?","공기",["모래","나무껍질","유리"]],
-["다음 중 알에서 태어나는 동물은?","닭",["고양이","강아지","소"]],
-["비가 내린 뒤 하늘에 나타날 수 있는 것은?","무지개",["눈사람","모닥불","연기"]],
-["자석에 잘 붙는 것은?","철로 된 클립",["나무젓가락","종이","고무공"]],
-["물속에서 아가미로 숨 쉬는 동물은?","물고기",["참새","고양이","나비"]],
-["사람의 몸에서 피를 보내는 기관은?","심장",["위","귀","손톱"]],
-["지구 주위를 도는 자연 위성은?","달",["태양","화성","금성"]],
-["식물의 뿌리가 하는 일은?","물과 양분 흡수",["꽃가루 만들기","씨앗 날리기","열매 먹기"]],
-["빛을 가리면 생기는 것은?","그림자",["무지개","이슬","안개"]],
-["지구에서 낮과 밤이 생기는 주된 까닭은?","지구가 자전하기 때문",["달이 빛나기 때문","태양이 꺼지기 때문","구름이 움직이기 때문"]],
-["다음 중 포유류는?","고래",["상어","문어","송어"]],
-["나비가 자라는 순서로 알맞은 것은?","알→애벌레→번데기→나비",["알→나비→번데기→애벌레","번데기→알→나비→애벌레","애벌레→알→나비→번데기"]]
-];
-const history=[
-["대한민국의 수도는 어디일까요?","서울",["부산","제주","인천"]],
-["한글을 만든 조선의 왕은?","세종대왕",["광개토대왕","정조","이순신"]],
-["거북선과 관련 있는 인물은?","이순신",["장영실","세종대왕","김유신"]],
-["우리나라의 국기는?","태극기",["무궁화기","한글기","독도기"]],
-["우리나라의 국화로 알려진 꽃은?","무궁화",["장미","해바라기","튤립"]],
-["고구려를 세운 인물은?","주몽",["박혁거세","온조","왕건"]],
-["신라의 옛 수도는?","경주",["수원","전주","춘천"]],
-["우리나라의 광복절은?","8월 15일",["3월 1일","6월 6일","10월 9일"]],
-["한글날은 몇 월 며칠일까요?","10월 9일",["1월 1일","5월 5일","12월 25일"]],
-["조선 시대에 비의 양을 재던 기구는?","측우기",["해시계","나침반","돋보기"]],
-["고려를 세운 인물은?","왕건",["주몽","이성계","을지문덕"]],
-["음력 1월 1일인 전통 명절은?","설날",["추석","단오","한식"]],
-["조선의 첫 번째 왕은?","태조 이성계",["세종대왕","정조","고종"]],
-["개천절은 몇 월 며칠일까요?","10월 3일",["3월 1일","6월 6일","8월 15일"]],
-["고려 시대의 대표적인 인쇄 문화유산은?","팔만대장경",["훈민정음","측우기","거북선"]]
-];
-const life=[
-["길을 건널 때 가장 안전한 행동은?","횡단보도에서 신호를 확인해요",["차 사이로 뛰어요","휴대폰만 봐요","빨간불에 건너요"]],
-["친구가 속상해할 때 좋은 행동은?","이야기를 들어주고 위로해요",["놀려요","모른 척해요","물건을 숨겨요"]],
-["이를 건강하게 관리하는 방법은?","꼼꼼히 양치해요",["단것만 먹어요","양치하지 않아요","딱딱한 것을 이로 깨요"]],
-["쓰레기를 줄이는 좋은 방법은?","필요한 만큼만 사용해요",["바닥에 버려요","물을 계속 틀어놔요","물건을 바로 버려요"]],
-["불이 났을 때 해야 할 일은?","어른에게 알리고 안전하게 대피해요",["숨겨요","엘리베이터를 타요","다시 들어가요"]],
-["친구의 물건을 쓰고 싶을 때는?","먼저 허락을 구해요",["몰래 가져가요","숨겨요","망가뜨려요"]],
-["손을 씻기 좋은 때는?","식사하기 전",["잠든 뒤에만","운동할 때만","책을 읽을 때만"]],
-["낯선 사람이 따라오라고 하면?","거절하고 안전한 어른에게 알려요",["혼자 따라가요","비밀로 해요","주소를 알려요"]],
-["물을 아끼는 행동은?","양치할 때 컵을 사용해요",["수도꼭지를 계속 틀어요","물을 장난으로 뿌려요","물을 흘려요"]],
-["친구와 의견이 다를 때는?","서로의 말을 듣고 이야기해요",["소리를 질러요","밀쳐요","무조건 무시해요"]],
-["길에서 돈을 주웠다면?","가까운 어른에게 알려요",["바로 숨겨요","모두 써요","다른 사람에게 던져요"]],
-["재활용할 때 좋은 행동은?","종류에 맞게 분리해요",["모두 섞어요","길에 놓아요","물에 버려요"]],
-["몸이 아프면 어떻게 해야 할까요?","보호자나 선생님에게 알려요",["아픈 척 숨겨요","약을 마음대로 먹어요","혼자 멀리 나가요"]],
-["도서관에서 지켜야 할 예절은?","작은 목소리로 이야기해요",["큰 소리로 뛰어요","책을 찢어요","음식을 흩뿌려요"]],
-["개인정보를 지키려면?","비밀번호를 함부로 알려주지 않아요",["모두에게 알려요","주소를 공개해요","모르는 링크를 모두 눌러요"]]
-];
-let state={level:1,unlocked:1,done:{},wrong:[],questionIndex:0,score:0,questions:[],answers:[],review:false};
-try{state={...state,...JSON.parse(localStorage.getItem("kkt-state")||"{}")}}catch(e){}
-function save(){try{localStorage.setItem("kkt-state",JSON.stringify(state))}catch(e){}}
-function shuffle(a,seed){let b=a.slice(),x=(seed*9301+49297)%233280;for(let i=b.length-1;i>0;i--){x=(x*9301+49297)%233280;let j=x%(i+1);[b[i],b[j]]=[b[j],b[i]]}return b}
-function questionFrom(row,cat,id,seed){return {id,cat,text:row[0],answer:String(row[1]),choices:shuffle([String(row[1]),...row[2].map(String)],seed)}}
-function mathQuestion(level,i){let n=level, a,b,ans,text,mode=(i+level)%4;
-if(level<=10){a=3+((i*3+level)%10);b=1+((i+level*2)%9);if(mode%2){ans=a+b;text=`${a} + ${b} = ?`}else{if(a<b)[a,b]=[b,a];ans=a-b;text=`${a} − ${b} = ?`}}
-else if(level<=20){a=10+((i*7+level)%40);b=2+((i+level)%25);if(mode%2){ans=a+b;text=`${a} + ${b} = ?`}else{if(a<b)[a,b]=[b,a];ans=a-b;text=`${a} − ${b} = ?`}}
-else if(level<=30){a=2+((i+level)%12);b=2+((i*3+level)%10);ans=a*b;text=`${a} × ${b} = ?`}
-else if(level<=40){b=2+((i+level)%9);ans=2+((i*3+level)%12);a=b*ans;text=`${a} ÷ ${b} = ?`}
-else{a=10+((i*7+level)%60);b=2+((i*3+level)%25);if(mode%2){ans=a+b;text=`${a} + ${b} = ?`}else{if(a<b)[a,b]=[b,a];ans=a-b;text=`${a} − ${b} = ?`}}
-let vals=[ans,ans+1,Math.max(0,ans-1),ans+2];return {id:`m-${level}-${i}`,cat:"수학",text,answer:String(ans),choices:shuffle([...new Set(vals)].map(String),level*33+i)}}
-function buildLevel(level){let out=[],seen=new Set();
-function add(q){if(!q||seen.has(q.text))return;seen.add(q.text);out.push(q)}
-for(let i=0;i<2;i++){let r=spelling[(level*2+i)%spelling.length];add(questionFrom(r,"맞춤법",`sp-${level}-${i}`,level+i))}
-for(let i=0;i<2;i++){let r=spacing[(level*2+i)%spacing.length];add(questionFrom(r,"띄어쓰기",`st-${level}-${i}`,level+i+8))}
-let banks=[vocab,science,history,life],cats=["영어","과학","역사·사회","생활 상식"];
-for(let i=0;i<16;i++){if(i%4===0){add(mathQuestion(level,i));continue}let k=(i+level)%4,bank=banks[k],r=bank[(level*3+i)%bank.length];add(questionFrom(r,cats[k],`${cats[k]}-${level}-${i}`,level*19+i))}
-while(out.length<20){let i=out.length;add(mathQuestion(level,i+11));if(out.length<20){let k=i%4,bank=banks[k],r=bank[(level+i*2)%bank.length];add(questionFrom(r,cats[k],`extra-${level}-${i}`,level*5+i))}}
-/* Next-level remediation: use distinct parallel questions from the same subject bank when possible. */
-if(level>1){let prev=state.wrong.filter(w=>w.level===level-1);for(let j=0;j<Math.min(2,prev.length);j++){let w=prev[j],cat=w.cat,bank=cat==="맞춤법"?spelling:cat==="띄어쓰기"?spacing:cat==="영어"?vocab:cat==="과학"?science:cat==="역사·사회"?history:cat==="생활 상식"?life:null;if(bank){let r=bank[(w.seed+3)%bank.length];let q=questionFrom(r,cat,`review-${level}-${j}`,level*77+j);q.text="복습 도전! "+q.text;out[out.length-1-j]=q}}}
-return out.slice(0,20)}
-function home(){const done=Object.keys(state.done||{}).length;$("#app").innerHTML=`<section class="card"><div class="row"><div><span class="pill">나의 학습 현황</span><h2 style="margin:10px 0 3px">LEVEL ${state.unlocked} 도전 준비!</h2><div class="muted">${done}/50 레벨 완료 · 복습할 오답 ${state.wrong.length}개</div></div><div style="font-size:36px">🏅</div></div><div class="track"><div class="fill" style="width:${done/50*100}%"></div></div><button class="primary full" id="start">LEVEL ${state.unlocked} 시작하기 →</button><button class="secondary full" id="review" ${state.wrong.length?"":"disabled"}>틀린 문제 복습하기 (${state.wrong.length})</button></section><section class="card"><b>과목 탐험</b><p class="muted">맞춤법 · 띄어쓰기 · 수학 · 영어 · 과학 · 역사·사회 · 생활 상식</p><div class="grid"><div>✍️ 맞춤법</div><div>🔤 띄어쓰기</div><div>🔢 수학</div><div>🌎 영어</div><div>🔬 과학</div><div>🏛️ 역사·사회</div></div></section><section class="card"><b>레벨 선택</b><div class="muted">레벨이 올라갈수록 수학을 포함한 문제 난이도가 높아집니다.</div><div class="levels" id="levels"></div></section>`;
-$("#start").onclick=()=>start(state.unlocked,false);$("#review").onclick=()=>start(state.unlocked,true);let el=$("#levels");for(let i=1;i<=50;i++){let b=document.createElement("button");b.className="level "+(state.done[i]?"done":"");b.textContent=(i<=state.unlocked?"⭐ ":"🔒 ")+i;b.disabled=i>state.unlocked;b.onclick=()=>start(i,false);el.appendChild(b)}}
-function start(level,review){state.level=level;state.review=review;state.questions=review?state.wrong.slice(0,20).map((w,i)=>({id:"review-"+i,cat:w.cat,text:"다시 풀어 봐요! "+w.text,answer:w.answer,choices:w.choices,seed:w.seed})):buildLevel(level);if(!state.questions.length){home();return}state.questionIndex=0;state.score=0;state.answers=[];renderQuestion()}
-function renderQuestion(){if(state.questionIndex>=state.questions.length){finish();return}let q=state.questions[state.questionIndex];$("#app").innerHTML=`<section class="card"><div class="row"><span class="pill">${state.review?"오답 복습":"LEVEL "+state.level+" · "+q.cat}</span><span class="muted">${state.questionIndex+1} / ${state.questions.length}</span></div><div class="track"><div class="fill" style="width:${state.questionIndex/state.questions.length*100}%"></div></div><div class="muted" style="margin-top:18px">${q.cat}</div><div class="question">${q.text}</div><div id="options"></div><div id="feedback"></div><div class="row" style="margin-top:16px"><span class="muted">⏱ 시간제한 없음</span><button class="primary" id="next" disabled>다음 문제 →</button></div></section><button class="secondary full" id="quit">레벨 선택으로 돌아가기</button>`;
-let box=$("#options");q.choices.forEach((c,i)=>{let b=document.createElement("button");b.className="opt";b.innerHTML=`<span class="letter">${i+1}</span><span>${c.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</span>`;b.onclick=()=>choose(c,b);box.appendChild(b)});$("#next").onclick=()=>{state.questionIndex++;renderQuestion()};$("#quit").onclick=home}
-function choose(c,btn){if(btn.disabled)return;let q=state.questions[state.questionIndex],ok=c===q.answer;if(ok)state.score++;state.answers.push({q,selected:c,ok});document.querySelectorAll(".opt").forEach(b=>{b.disabled=true;let t=b.querySelector("span:nth-child(2)").textContent;if(t===q.answer)b.classList.add("correct");if(t===c&&!ok)b.classList.add("wrong")});$("#feedback").className="feedback "+(ok?"good":"bad");$("#feedback").innerHTML=ok?"🎉 정답이에요! 정말 잘했어요.":`괜찮아요. 정답은 <b>${q.answer}</b>예요. 다음에 비슷한 문제로 다시 연습해요!`;$("#next").disabled=false;
-state.wrong=state.wrong.filter(w=>w.id!==q.id);if(!ok)state.wrong.unshift({id:q.id,cat:q.cat,text:q.text,answer:q.answer,choices:q.choices,level:state.level,seed:state.questionIndex});state.wrong=state.wrong.slice(0,100);save()}
-function finish(){let n=state.questions.length,score=state.score,level=state.level;if(!state.review){state.done[level]={score,total:n};state.unlocked=Math.max(state.unlocked,Math.min(50,level+1));save()}$("#app").innerHTML=`<section class="card center"><div style="font-size:48px">${score/n>=.8?"🏆":score/n>=.5?"🌟":"🌱"}</div><h2>${state.review?"복습 완료!":"LEVEL "+level+" 완료!"}</h2><div class="muted">끝까지 도전한 것만으로도 멋져요!</div><div class="score">${score}<span class="muted" style="font-size:20px"> / ${n}점</span></div><div class="track"><div class="fill" style="width:${score/n*100}%"></div></div><p>${score===n?"완벽해요! 모든 문제를 맞혔어요.":score/n>=.8?"아주 잘했어요! 조금만 더 연습해 봐요.":"틀린 문제도 좋은 배움이에요. 복습해 봐요!"}</p><button class="primary full" id="again">다시 도전</button><button class="secondary full" id="review2">틀린 문제 복습 (${state.wrong.length})</button><button class="secondary full" id="home">레벨 선택</button></section><section class="card"><b>이번 레벨 결과</b>${state.answers.map((a,i)=>`<div style="border-top:1px solid #eee;padding:12px 0"><b>${i+1}. ${a.q.text}</b><div class="muted" style="color:${a.ok?"#26864e":"#bd3d3d"}">${a.ok?"정답":"내 답: "+a.selected+" · 정답: "+a.q.answer}</div></div>`).join("")}</section>`;
-$("#again").onclick=()=>start(level,false);$("#review2").onclick=()=>start(level,true);$("#home").onclick=home}
-home();
-if("serviceWorker" in navigator && location.protocol!=="file:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+const STORE='juaQuizProgressV1';
+let state=JSON.parse(localStorage.getItem(STORE)||'{"wrong":[],"flagged":[],"answered":{},"scores":{}}');
+let currentLevel=1, currentIndex=0, currentSet=[], activeQuestion=null, selected=null, reviewMode=null, reviewIds=[];
+const categories=['영어','수학','과학','상식','맞춤법','띄어쓰기'];
+const animals=[['cat','고양이'],['dog','개'],['apple','사과'],['book','책'],['water','물'],['sun','태양'],['moon','달'],['bird','새'],['fish','물고기'],['milk','우유'],['school','학교'],['friend','친구'],['family','가족'],['happy','행복한'],['small','작은'],['big','큰'],['red','빨간색'],['blue','파란색'],['green','초록색'],['one','하나'],['two','둘'],['three','셋'],['four','넷'],['five','다섯'],['chair','의자'],['table','탁자'],['pencil','연필'],['flower','꽃'],['rain','비'],['star','별'],['bread','빵'],['rice','쌀/밥'],['run','달리다'],['read','읽다'],['jump','뛰다'],['house','집'],['door','문'],['hand','손'],['eye','눈'],['nose','코'],['mother','어머니'],['father','아버지'],['morning','아침'],['night','밤'],['hot','뜨거운'],['cold','추운'],['fast','빠른'],['slow','느린'],['clean','깨끗한'],['help','돕다']];
+const spelling=[['왠지','왠지'],['웬일','웬일'],['며칠','며칠'],['금세','금세'],['어떡해','어떡해'],['설거지','설거지'],['찌개','찌개'],['역할','역할'],['희한하다','희한하다'],['개수','개수'],['맞히다','맞히다'],['바라다','바라다'],['깨끗이','깨끗이'],['굳이','굳이'],['오랜만','오랜만'],['안녕하세요','안녕하세요'],['돼요','돼요'],['할게요','할게요'],['같이','같이'],['낫다','낫다'],['어이없다','어이없다'],['며느리','며느리'],['봉숭아','봉숭아'],['숟가락','숟가락'],['가르치다','가르치다'],['가리키다','가리키다'],['잠그다','잠그다'],['통째로','통째로'],['무릅쓰고','무릅쓰고'],['며칠째','며칠째']];
+const spacing=[['할 수 있다','할 수 있다'],['알아 보다','알아보다'],['한 번','한 번'],['한번 해 보다','한번 해 보다'],['우리 집','우리 집'],['돌아가다','돌아가다'],['밖에 없다','밖에 없다'],['할 만하다','할 만하다'],['잘하다','잘하다'],['잘 먹겠습니다','잘 먹겠습니다'],['이것뿐이다','이것뿐이다'],['그럴 리가 없다','그럴 리가 없다'],['큰 소리','큰 소리'],['첫 번째','첫 번째'],['오랜만에','오랜만에'],['더 이상','더 이상'],['할 때마다','할 때마다'],['집 안','집 안'],['눈앞','눈앞'],['한가운데','한가운데']];
+const science=[['물은 보통 몇 도에서 얼까요?','0℃','10℃','50℃','100℃'],['식물이 자라는 데 꼭 필요한 것은?','물과 빛','플라스틱','유리구슬','연필'],['사람이 숨을 쉴 때 주로 필요한 기체는?','산소','헬륨','수소','네온'],['지구 주위를 도는 천체는?','달','태양','화성','금성'],['낮과 밤이 생기는 까닭은?','지구의 자전','달의 공전','구름의 이동','바다의 파도'],['자석에 잘 붙는 것은?','철 클립','나무젓가락','종이','고무공'],['물의 세 가지 상태가 아닌 것은?','불꽃','고체','액체','기체'],['어른이 되어도 계속 자라는 신체 부위로 알려진 것은?','귀와 코의 연골','눈알','치아의 길이','손톱뿌리 전체']];
+const general=[['우리나라의 수도는 어디일까요?','서울','부산','제주','인천'],['일주일은 며칠일까요?','7일','5일','8일','10일'],['신호등에서 건너도 좋다는 뜻의 색은?','초록색','빨간색','보라색','검은색'],['책을 빌려 읽는 곳은?','도서관','세탁소','주유소','약국'],['비가 올 때 쓰는 물건은?','우산','부채','선글라스','장갑'],['편지를 보내는 곳과 관련 있는 것은?','우체국','동물원','수영장','놀이터'],['횡단보도를 건널 때 먼저 할 일은?','좌우를 살피기','뛰어가기','눈 감기','친구 밀기'],['불이 났을 때 도움을 요청하는 긴급 번호는?','119','112','114','131']];
+const facts=[['벌은 꿀을 만들기 위해 주로 무엇을 모을까요?','꽃의 꿀','모래','나뭇가지','눈'],['거미의 다리는 몇 개일까요?','8개','4개','6개','10개'],['무지개는 보통 몇 가지 색으로 설명할까요?','7가지','3가지','5가지','9가지'],['겨울잠을 자는 동물로 잘 알려진 것은?','곰','닭','고래','기린'],['바닷물은 민물보다 보통 어떨까요?','짠맛이 난다','단맛이 난다','기름지다','항상 얼어 있다']];
+const shuffle=a=>{let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};
+function hash(s){let h=0;for(let c of s)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)}
+function makeQ(id,level,slot){
+ let seed=id*17+level*31+slot*13, cat=categories[(level+slot)%6], q, ans, distractors=[];
+ if(cat==='영어'){
+  let pair=animals[(seed*7+slot*3)%animals.length], reverse=(slot+level)%2===0;
+  q=reverse?`영단어 “${pair[0]}”의 뜻은 무엇일까요?`:`“${pair[1]}”을(를) 영어로 고르면 무엇일까요?`;
+  ans=reverse?pair[1]:pair[0];
+  distractors=shuffle(animals.filter(x=>x!==pair).map(x=>reverse?x[1]:x[0])).slice(0,3);
+ } else if(cat==='수학'){
+  let n=level+1+(seed%Math.max(2,level+3)), a,b,op=(slot+level)%4;
+  if(level<10){a=1+(seed%20);b=1+((seed*3)%10);op=slot%2}
+  else if(level<25){a=10+(seed%70);b=1+((seed*3)%Math.min(40,level+10))}
+  else {a=20+(seed%180);b=1+((seed*3)%Math.min(90,level+20))}
+  if(op===0){q=`${a} + ${b} = ?`;ans=String(a+b)}
+  else if(op===1){if(b>a)[a,b]=[b,a];q=`${a} − ${b} = ?`;ans=String(a-b)}
+  else if(op===2){a=1+(seed%Math.min(12,level+2));b=1+((seed*3)%Math.min(12,level+2));q=`${a} × ${b} = ?`;ans=String(a*b)}
+  else {b=1+(seed%Math.min(10,level+2));a=b*(1+((seed*5)%Math.min(12,level+3)));q=`${a} ÷ ${b} = ?`;ans=String(a/b)}
+  let val=Number(ans);distractors=[String(val+1),String(val-1),String(val+3)];
+ } else if(cat==='과학'){
+  let item=science[(seed+level)%science.length];q=item[0];ans=item[1];distractors=item.slice(2);
+  if(level>25 && slot%3===0){q='식물의 뿌리가 하는 중요한 일은 무엇일까요?';ans='물을 흡수한다';distractors=['빛을 만든다','소리를 낸다','씨앗을 먹는다']}
+ } else if(cat==='상식'){
+  let item=(level<15?general:facts)[(seed+level)% (level<15?general.length:facts.length)];q=item[0];ans=item[1];distractors=item.slice(2);
+ } else if(cat==='맞춤법'){
+  let pool=spelling[(seed+level)%spelling.length];ans=pool[0];q=`다음 중 올바른 표기는 무엇일까요?\n(비슷한 표현을 잘 살펴보세요.)`;
+  let wrongs={'왠지':['웬지','왠찌','웬찌'],'웬일':['왠일','웬닐','왠닐'],'며칠':['몇일','몇칠','며칠이'],'금세':['금새','금쎄','금셰'],'어떡해':['어떻해','어떡헤','어떻헤'],'설거지':['설겆이','설거찌','설거지이'],'찌개':['찌게','찌개이','찌께'],'역할':['역활','역할이','역할ㄹ'],'희한하다':['희안하다','희한허다','희한하 다'],'개수':['갯수','게수','개쑤'],'맞히다':['맞추다','마치다','맞히다'],'바라다':['바래다','바라타','바라다'],'깨끗이':['깨끗히','깨끄시','깨끗이이'],'굳이':['구지','굳히','굳이이'],'오랜만':['오랫만','오랜맨','오랜 만'],'돼요':['되요','돼여','됴요'],'할게요':['할께요','할께여','할게여'],'같이':['가치','갇이','같히'],'낫다':['낳다','낮다','낫따']};
+  distractors=wrongs[ans]||['틀린 표기1','틀린 표기2','틀린 표기3'];
+ } else {
+  let pool=spacing[(seed+level)%spacing.length];ans=pool[0];q='다음 중 올바른 띄어쓰기는 무엇일까요?';distractors=[ans.replace(' ','')+' 요',ans+'를',ans.replace(' ','  ')];
+  if(ans==='할 수 있다')distractors=['할수 있다','할 수있다','할수있다'];
+  if(ans==='한 번')distractors=['한번','한  번','한 번씩'];
+  if(ans==='우리 집')distractors=['우리집','우 리 집','우리  집'];
+  if(ans==='잘 먹겠습니다')distractors=['잘먹겠습니다','잘 먹 겠습니다','잘먹 겠습니다'];
+ }
+ let options=shuffle([ans,...distractors]).filter((v,i,a)=>a.indexOf(v)===i);
+ // Guarantee four distinct choices and keep the correct answer present.
+ while(options.length<4){let extra='보기 '+(options.length+1);if(!options.includes(extra)&&extra!==ans)options.push(extra)}
+ options=options.slice(0,4);
+ if(!options.includes(ans))options[0]=ans;
+ options=shuffle(options);
+ return {id:String(id),level,slot,category:cat,question:q,answer:ans,options};
+}
+const bank=[];for(let l=1;l<=50;l++)for(let s=0;s<20;s++)bank.push(makeQ((l-1)*20+s+1,l,s));
+function save(){localStorage.setItem(STORE,JSON.stringify(state));updateCounts()}
+function updateCounts(){document.getElementById('wrongCount').textContent=state.wrong.length;document.getElementById('flagCount').textContent=state.flagged.length}
+function buildLevels(){let el=document.getElementById('levels');el.innerHTML='';for(let l=1;l<=50;l++){let b=document.createElement('button');b.className='level';b.textContent=l;b.title='레벨 '+l+' 시작';let done=state.scores[l];if(done&&done.best>=15)b.classList.add('done');b.onclick=()=>startLevel(l);el.appendChild(b)}}
+function startLevel(l){currentLevel=l;currentSet=bank.filter(q=>q.level===l);currentIndex=0;reviewMode=null;document.getElementById('home').classList.add('hidden');document.getElementById('review').classList.add('hidden');document.getElementById('play').classList.remove('hidden');renderQuestion()}
+function renderQuestion(){activeQuestion=currentSet[currentIndex];selected=null;document.getElementById('levelBadge').textContent=reviewMode? '다시 풀기':`LEVEL ${activeQuestion.level}`;document.getElementById('counter').textContent=`${currentIndex+1} / ${currentSet.length}`;document.getElementById('bar').style.width=`${currentIndex/currentSet.length*100}%`;document.getElementById('category').textContent='분야: '+activeQuestion.category;document.getElementById('question').textContent=activeQuestion.question;document.getElementById('feedback').className='feedback hidden';document.getElementById('feedback').textContent='';document.getElementById('nextBtn').disabled=true;document.getElementById('nextBtn').textContent=currentIndex===currentSet.length-1?'결과 보기 →':'다음 문제 →';document.getElementById('flagBtn').textContent=state.flagged.includes(activeQuestion.id)?'💗 애매한 문제 표시 해제':'🤔 애매한 문제로 표시';let wrap=document.getElementById('options');wrap.innerHTML='';activeQuestion.options.forEach(opt=>{let b=document.createElement('button');b.className='opt';b.textContent=opt;b.onclick=()=>answer(opt,b);wrap.appendChild(b)})}
+function answer(opt,btn){if(selected!==null)return;selected=opt;let correct=opt===activeQuestion.answer;document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.textContent===activeQuestion.answer)b.classList.add('correct')});if(!correct)btn.classList.add('wrong');let f=document.getElementById('feedback');f.className='feedback '+(correct?'good':'bad');f.textContent=correct?'정답이에요! 정말 잘했어요! 🎉':`아깝다! 정답은 “${activeQuestion.answer}”예요. 다음에 다시 도전해 보자!`;let id=activeQuestion.id;if(correct){state.wrong=state.wrong.filter(x=>x!==id)}else if(!state.wrong.includes(id))state.wrong.push(id);state.answered[id]=correct;save();document.getElementById('nextBtn').disabled=false}
+function toggleFlag(){let id=activeQuestion.id;if(state.flagged.includes(id))state.flagged=state.flagged.filter(x=>x!==id);else state.flagged.push(id);save();document.getElementById('flagBtn').textContent=state.flagged.includes(id)?'💗 애매한 문제 표시 해제':'🤔 애매한 문제로 표시'}
+function nextQuestion(){if(selected===null)return;if(currentIndex<currentSet.length-1){currentIndex++;renderQuestion()}else finishSet()}
+function finishSet(){let correct=currentSet.filter(q=>state.answered[q.id]===true).length;let old=state.scores[currentLevel]||{best:0,attempts:0};state.scores[currentLevel]={best:Math.max(old.best,correct),attempts:old.attempts+1,last:correct};save();document.getElementById('play').classList.add('hidden');document.getElementById('review').classList.remove('hidden');document.getElementById('reviewTitle').textContent=`레벨 ${currentLevel} 완료!`;document.getElementById('reviewBody').innerHTML=`<div class="question">🎉 ${correct} / 20 정답</div><p style="text-align:center">주아야, 도전하느라 정말 수고했어!</p><div class="row" style="justify-content:center"><button onclick="startLevel(${currentLevel})">이 레벨 다시 풀기</button><button class="mint" onclick="goHome()">다른 레벨 고르기</button></div>`}
+function startReview(mode){reviewMode=mode;reviewIds=[...(mode==='wrong'?state.wrong:state.flagged)];currentSet=reviewIds.map(id=>bank.find(q=>q.id===id)).filter(Boolean);if(!currentSet.length){alert(mode==='wrong'?'아직 틀린 문제가 없어요!':'애매한 문제로 표시한 문제가 없어요!');return}currentIndex=0;document.getElementById('home').classList.add('hidden');document.getElementById('review').classList.add('hidden');document.getElementById('play').classList.remove('hidden');renderQuestion()}
+function goHome(){document.getElementById('play').classList.add('hidden');document.getElementById('review').classList.add('hidden');document.getElementById('home').classList.remove('hidden');buildLevels();updateCounts()}
+function showStats(){let el=document.getElementById('stats');el.classList.toggle('hidden');let total=Object.values(state.answered).filter(Boolean).length;let attempts=Object.values(state.scores).reduce((a,x)=>a+x.attempts,0);el.innerHTML=`<h2>🏆 주아의 기록</h2><p>지금까지 정답 처리된 문제: <strong>${total}</strong>개</p><p>레벨 도전 횟수: <strong>${attempts}</strong>회</p><p>완료한 레벨(15개 이상 정답): <strong>${Object.values(state.scores).filter(x=>x.best>=15).length}</strong> / 50</p>`}
+function resetProgress(){if(confirm('정말 모든 기록을 초기화할까요?')){state={wrong:[],flagged:[],answered:{},scores:{}};save();buildLevels();document.getElementById('stats').classList.add('hidden')}}
+buildLevels();updateCounts();
 </script>
 </body></html>
